@@ -14,6 +14,7 @@ public class Main {
         while (true) {
             System.out.println("Enter version number");
             setVersion(scanner.nextLine());
+            files = new HashMap<>();
             initHashMap(getVersion());
             System.out.println("Put folders .import and stories to folder " + getVersion() + " and file " + getVersion() + ".csv to root");
             System.out.println("Choose operation:");
@@ -24,10 +25,10 @@ public class Main {
             switch (com) {
                 case 1:
                     tresToflfl();
-                    continue;
+                    return;
                 case 2:
                     flflTotres();
-                    continue;
+                    return;
                 case 3:
                     break;
             }
@@ -69,7 +70,7 @@ public class Main {
                 byte[] bytes = new byte[(int) tres.length()];
                 fis.read(bytes);
                 flfl.createNewFile();
-                try (FileOutputStream outputStream = new FileOutputStream(flfl);){
+                try (FileOutputStream outputStream = new FileOutputStream(flfl)){
                     outputStream.write(bytes);
                 } catch (IOException ex) {
                     System.out.println(ex.getMessage() + flfl.getPath());
@@ -93,7 +94,7 @@ public class Main {
                 byte[] bytes = new byte[(int) flfl.length()];
                 fis.read(bytes);
                 tres.createNewFile();
-                try(FileOutputStream outputStream = new FileOutputStream(tres);) {
+                try(FileOutputStream outputStream = new FileOutputStream(tres)) {
                 outputStream.write(bytes);} catch (IOException ex) {
                     System.out.println(ex.getMessage() + tres.getPath());
                     continue;
